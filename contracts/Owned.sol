@@ -4,7 +4,7 @@ pragma solidity ^0.8.17;
 
 contract Owned {
     
-    address owner; // State variable.
+    address owner;
 
     constructor() {
         owner = msg.sender;
@@ -14,5 +14,5 @@ contract Owned {
         require(msg.sender == owner, "Only owner can perform this operation");
         _;
     }
-    receive () external payable {} // Fallback or default function.
+    receive () external payable {} 
 }
