@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.17;
 
-contract Owned {
+contract Owner {
     
     address owner;
 
@@ -14,5 +14,14 @@ contract Owned {
         require(msg.sender == owner, "Only owner can perform this operation");
         _;
     }
+
+    function changeOwner(address addr) public onlyOwner {
+        owner = addr;
+    }
+
+    function getOwner() external view returns(address) {
+        return owner;
+    }
+    
     receive () external payable {} 
 }

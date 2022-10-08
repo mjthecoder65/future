@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Unlicensed
 pragma solidity ^0.8.17;
 
-import "./Mortal";
+import "./Mortal.sol";
 
 contract Future is Mortal {
 
@@ -20,9 +20,10 @@ contract Future is Mortal {
 
     mapping(address => User) private users;
 
-    function addUser(address payable addr, string memory username) payable public onlyOwner {
-        users[addr] = User(addr, username, msg.value);
-        emit LogAddedUser(addr, username, msg.value);
+    function addUser(address payable addr, string memory username) public onlyOwner {
+        uint amount = 0;
+        users[addr] = User(addr, username, amount);
+        emit LogAddedUser(addr, username, amount);
     }
 
     function getUser(address addr ) public view returns(User memory) {

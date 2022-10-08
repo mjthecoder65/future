@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.17;
 
-import "./Owned";
+import "./Owner.sol";
 
-contract Mortal is Owned {
+contract Mortal is Owner {
     function destroy() public onlyOwner {
         selfdestruct(payable(owner));
     }
